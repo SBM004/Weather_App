@@ -115,7 +115,7 @@ class WhetherApp extends StatelessWidget{
                     )
                   ),
                   Card(
-                    shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                    shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)),
                     elevation: 10,
                     child:Container(
                       width:100,
