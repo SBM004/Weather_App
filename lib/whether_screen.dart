@@ -1,9 +1,12 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-
+import './cards_container/cards.dart';
+import 'package:http/http.dart 'as http;
 class WhetherApp extends StatelessWidget{
-
+  Future getCurrentWhether() async{
+    http.get(Uri.parse('https://http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=306252eb428edfd327e1742988e5aa56'));
+  }
   const WhetherApp({super.key});
   @override
   Widget build(BuildContext context){
@@ -44,7 +47,7 @@ class WhetherApp extends StatelessWidget{
                       child: Column(
                         
                         children: [
-                          Text('300°F',style:TextStyle(color:Colors.white,fontSize:30.0,fontWeight: FontWeight.bold)),
+                          Text('300°K',style:TextStyle(color:Colors.white,fontSize:30.0,fontWeight: FontWeight.bold)),
                           SizedBox(height:10),
                           Icon(Icons.cloud,color:Colors.white,size:64),
                           SizedBox(height:10),
@@ -66,86 +69,15 @@ class WhetherApp extends StatelessWidget{
               child: Row(
                 
                 children:[
-                  Card(
-                    shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                    elevation: 10,
-                    child:Container(
-                      width:100,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(children:[Text('9:00',style:TextStyle(color:Colors.white,fontSize:15,fontWeight: FontWeight.bold)),
-                        SizedBox(height:5),
-                        Icon(Icons.cloud,size:30),
-                        SizedBox(height:5),
-                        Text('300.20° F',style:TextStyle(color:Colors.white,fontSize:15,fontWeight: FontWeight.bold))
-                        ]),
-                      ),
-                    )
-                  ),
-                  Card(
-                    shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                    elevation: 10,
-                    child:Container(
-                      width:100,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(children:[Text('9:00',style:TextStyle(color:Colors.white,fontSize:15,fontWeight: FontWeight.bold)),
-                        SizedBox(height:5),
-                        Icon(Icons.cloud,size:30),
-                        SizedBox(height:5),
-                        Text('300.20° F',style:TextStyle(color:Colors.white,fontSize:15,fontWeight: FontWeight.bold))
-                        ]),
-                      ),
-                    )
-                  ),
-                  Card(
-                    shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                    elevation: 10,
-                    child:Container(
-                      width:100,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(children:[Text('9:00',style:TextStyle(color:Colors.white,fontSize:15,fontWeight: FontWeight.bold)),
-                        SizedBox(height:5),
-                        Icon(Icons.cloud,size:30),
-                        SizedBox(height:5),
-                        Text('300.20° F',style:TextStyle(color:Colors.white,fontSize:15,fontWeight: FontWeight.bold))
-                        ]),
-                      ),
-                    )
-                  ),
-                  Card(
-                    shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)),
-                    elevation: 10,
-                    child:Container(
-                      width:100,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(children:[Text('9:00',style:TextStyle(color:Colors.white,fontSize:15,fontWeight: FontWeight.bold)),
-                        SizedBox(height:5),
-                        Icon(Icons.cloud,size:30),
-                        SizedBox(height:5),
-                        Text('300.20° F',style:TextStyle(color:Colors.white,fontSize:15,fontWeight: FontWeight.bold))
-                        ]),
-                      ),
-                    )
-                  ),
-                  Card(
-                    shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-                    elevation: 10,
-                    child:Container(
-                      width:100,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(children:[Text('9:00',style:TextStyle(color:Colors.white,fontSize:15,fontWeight: FontWeight.bold)),
-                        SizedBox(height:5),
-                        Icon(Icons.cloud,size:30),
-                        SizedBox(height:5),
-                        Text('300.20° F',style:TextStyle(color:Colors.white,fontSize:15,fontWeight: FontWeight.bold))
-                        ]),
-                      ),
-                    )
-                  ),
+                  // for(int i=1;i<=5;i++)
+                  //   HourlyForecastCard(),
+                    
+                  
+                 HourlyForecastCard(time:'9:00',icon:Icons.cloud,temp:'300.20° F'),
+                 HourlyForecastCard(time:'10:00',icon:Icons.sunny,temp:'300.20° F'),
+                 HourlyForecastCard(time:'11:00',icon:Icons.air,temp:'300.20° F'),
+                HourlyForecastCard(time:'12:00',icon:Icons.water,temp:'300.20° F'),
+                  HourlyForecastCard(time:'1:00',icon:Icons.cloud,temp:'300.20° F'),
                 ]
               ),
             ),
@@ -153,9 +85,19 @@ class WhetherApp extends StatelessWidget{
               height:20
             ),
             //Additional information
-            Placeholder(
-              fallbackHeight:120
-            )
+            Text('Additional Information',style:TextStyle(color:Colors.white,fontSize:25,fontWeight: FontWeight.bold)),
+            SizedBox(height:10),
+            Container(
+              
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children:[
+                    AdditionalInfoCard(icon:Icons.water_drop,tt:'humidity',tt1:'94'),
+                      AdditionalInfoCard(icon:Icons.air,tt:'Wind speed',tt1:'7.64'),
+                       AdditionalInfoCard(icon:Icons.beach_access,tt:'Pressure',tt1:'1009'),
+                ],
+              ),
+            ),
           ]
          ),
        )
@@ -164,3 +106,4 @@ class WhetherApp extends StatelessWidget{
     );
   }
 }
+
