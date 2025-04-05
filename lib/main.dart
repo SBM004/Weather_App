@@ -5,6 +5,15 @@ void main() {
   runApp(const MyApp());
 }
 
+// Future<void> main() async{
+//    await dotenv.load(fileName: ".env");
+
+//   String apiKey = dotenv.env['API_KEY'] ?? "API_KEY_NOT_FOUND";
+//   print("Helooooooooooo");
+//   print("API Key: $apiKey");
+//   runApp(const MyApp());
+// }
+
 class MyApp extends StatelessWidget{
   const MyApp({super.key});
 
@@ -20,3 +29,4 @@ class MyApp extends StatelessWidget{
     // );
   }
 }
+

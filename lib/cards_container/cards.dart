@@ -20,7 +20,7 @@ class HourlyForecastCard extends StatelessWidget{
                       width:100,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Column(children:[Text(time,style:TextStyle(color:Colors.white,fontSize:15,fontWeight: FontWeight.bold)),
+                        child: Column(children:[Text(time,style:TextStyle(color:Colors.white,fontSize:15,fontWeight: FontWeight.bold),maxLines: 1,overflow:TextOverflow.ellipsis),
                         SizedBox(height:5),
                         Icon(icon,size:30),
                         SizedBox(height:5),
